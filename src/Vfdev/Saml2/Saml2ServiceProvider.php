@@ -4,6 +4,7 @@ namespace Vfdev\Saml2;
 use OneLogin_Saml2_Auth;
 use URL;
 use Illuminate\Support\ServiceProvider;
+use Vfdev\Saml2\Events\Saml2ConfigEvent;
 
 class Saml2ServiceProvider extends ServiceProvider
 {
@@ -41,6 +42,13 @@ class Saml2ServiceProvider extends ServiceProvider
 
         $this->app->singleton('Vfdev\Saml2\Saml2Auth', function ($app) {
             $config = config('saml2_settings');
+
+            $eventBasedConfig = event(new Saml2ConfigEvent());
+            
+            foreach( $eventBasedConfig as $index => $individualConfig ){
+              $config = array_merge($config, $individualConfig);
+            }
+
             if (empty($config['sp']['entityId'])) {
                 $config['sp']['entityId'] = URL::route('saml_metadata');
             }
