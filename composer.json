@@ -4,7 +4,7 @@
     "keywords": ["laravel","saml", "saml2", "onelogin"],
     "homepage": "https://github.com/vfdev/laravel-saml2",
     "license": "MIT",
-    "version": "0.8.1",
+    "version": "0.8.2",
     "authors": [
         {
             "name": "aklatzke",
