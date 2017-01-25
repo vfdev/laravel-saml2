@@ -1,13 +1,13 @@
 <?php
 
-namespace Aacotroneo\Saml2;
+namespace Vfdev\Saml2;
 
 use OneLogin_Saml2_Auth;
 
 /**
  * A simple class that represents the user that 'came' inside the saml2 assertion
  * Class Saml2User
- * @package Aacotroneo\Saml2
+ * @package Vfdev\Saml2
  */
 class Saml2User
 {

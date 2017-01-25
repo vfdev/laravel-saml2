@@ -1,5 +1,5 @@
 <?php
-namespace Aacotroneo\Saml2;
+namespace Vfdev\Saml2;
 
 use OneLogin_Saml2_Auth;
 use URL;
@@ -39,7 +39,7 @@ class Saml2ServiceProvider extends ServiceProvider
     public function register()
     {
 
-        $this->app->singleton('Aacotroneo\Saml2\Saml2Auth', function ($app) {
+        $this->app->singleton('Vfdev\Saml2\Saml2Auth', function ($app) {
             $config = config('saml2_settings');
             if (empty($config['sp']['entityId'])) {
                 $config['sp']['entityId'] = URL::route('saml_metadata');
@@ -54,7 +54,7 @@ class Saml2ServiceProvider extends ServiceProvider
 
             $auth = new OneLogin_Saml2_Auth($config);
 
-            return new \Aacotroneo\Saml2\Saml2Auth($auth);
+            return new \Vfdev\Saml2\Saml2Auth($auth);
         });
 
     }
